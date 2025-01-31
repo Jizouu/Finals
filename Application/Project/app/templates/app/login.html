@@ -1,0 +1,45 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+
+
+
+    {% block content %}
+    <header>
+        <h1>User Login</h1>
+    </header>
+    <main>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" name="username" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+            <br> 
+            <center>
+                <button type="submit">Login</button>
+            </center>
+            
+        </form>
+        <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% endif %}
+    </main>
+{% endblock %}
+
+
+  
+ 
+</body>
+</html>

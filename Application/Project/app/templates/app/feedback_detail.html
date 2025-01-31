@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h2 class="card-title text-center">Feedback Details</h2>
+        <!-- Use the default filter to handle missing name or email -->
+        <p><strong>Name:</strong> {{ feedback.name|default:"Anonymous" }}</p>
+        <p><strong>Email:</strong> {{ feedback.email|default:"Not provided" }}</p>
+        <p><strong>Barangay:</strong> {{ feedback.barangay.name }}</p>
+        <p><strong>Rating:</strong> {{ feedback.rating }} / 5</p>
+        <p><strong>Message:</strong> {{ feedback.comments|default:"No message provided." }}</p>
+        <p><strong>Submitted At:</strong> {{ feedback.submitted_at }}</p>
+        <a href="{% url 'feedback-list' %}" class="btn btn-secondary mt-3">Back to Feedback List</a>
+    </div>
+</div>
+{% endblock %}

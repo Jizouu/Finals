@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+
+{%load static%}
+   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+
+
+    {% block content %}
+    <header>
+        <h1>User Registration</h1>
+    </header>
+    <main>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <center>
+                <button type="submit">Register</button>
+            </center>
+           
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+    </main>
+{% endblock %}
+
+
+
+
+</body>
+</html>

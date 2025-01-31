@@ -1,0 +1,292 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Background Image */
+body {
+    background-image: url(/static/images/Background.jpeg); /* Your background image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Navbar Styling */
+nav {
+    display: flex;
+    justify-content: center; /* Center navigation links */
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark navbar */
+    padding: 15px 0; /* Add padding */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+/* Navigation Links */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem; /* Add space between links */
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background-color: #ff9800; /* Orange on hover */
+    color: black;
+}
+
+/* Centering the Image */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    min-height: 80vh; /* Adjust height based on your design */
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.centered-image {
+    width: 60%; /* Adjust the width of the image */
+    max-width: 800px; /* Set a max width to prevent it from becoming too large */
+    height: auto;
+    border-radius: 10px; /* Optional: Adds rounded corners */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Optional: Adds a shadow for effect */
+}
+
+
+/* Feedback Form Card Styling */
+.form-card {
+    background-color: #fff;  /* White background */
+    padding: 30px;  /* Increase padding for more space */
+    border-radius: 10px;  /* Rounded corners for smooth edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Soft shadow for a lifted effect */
+    max-width: 800px;  /* Make the card wider */
+    margin: 30px auto;  /* Center the card horizontally and add margin */
+}
+
+.form-title {
+    font-size: 1.8rem;  /* Larger title font for prominence */
+    font-weight: bold;
+    margin-bottom: 20px;  /* Space between title and form */
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;  /* Add space between form fields */
+}
+
+.form-label {
+    font-size: 1.1rem;  /* Larger label text */
+    font-weight: bold;  /* Bold labels for better readability */
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;  /* Full width for form inputs */
+    padding: 12px;  /* Add padding for better input experience */
+    font-size: 1rem;  /* Increase font size for readability */
+    border-radius: 5px;  /* Rounded corners */
+    border: 1px solid #ccc;  /* Light border color */
+    box-sizing: border-box;  /* Include padding and border in width calculation */
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    border-color: #007bff;  /* Blue border on focus */
+    outline: none;  /* Remove default focus outline */
+}
+
+.form-textarea {
+    height: 150px;  /* Make textarea bigger for better user experience */
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-submit-btn {
+    padding: 15px 25px;  /* Increase padding for the submit button */
+    background-color: #28a745;  /* Green background */
+    color: white;  /* White text */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;  /* Larger font size */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;  /* Add space between last field and the button */
+}
+
+.form-submit-btn:hover {
+    background-color: #218838;  /* Darker green on hover */
+    transform: translateY(-2px);  /* Slight lift on hover */
+}
+
+
+/* Feedback List - Cards */
+.card {
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text {
+    margin-bottom: 10px;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* Action Buttons (Edit, Delete) */
+.card .btn {
+    width: 45%;
+    font-size: 0.9rem;
+    padding: 8px;
+}
+
+/* Button Spacing */
+.card .d-flex {
+    margin-top: 10px;
+}
+
+
+/* Button Styling */
+.btn {
+    padding: 10px 20px;  /* Increase padding */
+    font-size: 1rem;  /* Adjust font size for better readability */
+    font-weight: bold;  /* Make button text bold */
+    border-radius: 5px;  /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease;  /* Smooth transition for hover effects */
+}
+
+.btn:hover {
+    background-color: #0056b3;  /* Darken the button on hover */
+    transform: translateY(-2px);  /* Slight elevation effect on hover */
+}
+
+/* Specific Button Colors */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Button Alignment */
+.d-flex .btn {
+    width: 45%;
+    font-size: 1rem;
+    padding: 12px 25px;  /* Make the action buttons (edit, delete) slightly bigger */
+}
+
+/* Create New Feedback Button */
+.btn-success.mt-4 {
+    display: block;
+    width: 200px;
+    margin: 20px auto;  /* Center the button and add top margin */
+}
+
+/* Styling for Cards */
+.card-body {
+    padding: 20px;
+}
+
+
+#alert-container {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.alert {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.error {
+    background-color: #f44336;
+    color: white;
+}

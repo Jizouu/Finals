@@ -1,0 +1,29 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">Feedback List</h2>
+
+    {% for feedback in feedbacks %}
+    <div class="card mb-3 shadow-sm border-light rounded">
+        <div class="card-body">
+            <h5 class="card-title">{{ feedback.name|default:"Anonymous" }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Barangay: {{ feedback.barangay.name }}</h6>
+            <p class="card-text">Rating: {{ feedback.rating }} / 5</p>
+            <p class="card-text">Message: {{ feedback.comments|default:"No message provided." }}</p>
+            <p class="card-text"><small class="text-muted">Submitted on: {{ feedback.submitted_at }}</small></p>
+
+            <!-- Actions -->
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'feedback-update' feedback.pk %}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{% url 'feedback-delete' feedback.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-center">No feedbacks available yet.</p>
+    {% endfor %}
+
+    <a href="{% url 'feedback-create' %}" class="btn btn-success mt-4">Create New Feedback</a>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<h2>Barangay List</h2>
+<a href="{% url 'barangay-create' %}">Create New Barangay</a>
+<ul>
+    {% for barangay in barangays %}
+    <li>
+        <a href="{% url 'barangay-detail' barangay.pk %}">{{ barangay.name }}</a>
+        <a href="{% url 'barangay-update' barangay.pk %}">Edit</a>
+        <a href="{% url 'barangay-delete' barangay.pk %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

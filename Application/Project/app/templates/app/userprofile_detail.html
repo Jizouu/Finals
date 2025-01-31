@@ -1,0 +1,10 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<h2>{{ userprofile.user.username }}</h2>
+<p>Role: {{ userprofile.role }}</p>
+<p>Barangay: {{ userprofile.barangay }}</p>
+<a href="{% url 'userprofile-update' userprofile.pk %}">Edit</a>
+<a href="{% url 'userprofile-delete' userprofile.pk %}">Delete</a>
+<a href="{% url 'userprofile-list' %}">Back to UserProfile List</a>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'app/base.html' %}
+
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+
+  
+      
+
+    {% block content %}
+
+    <header>
+        <h1>User Profile</h1>
+    </header>
+    <main>
+        <h2>Your Posts</h2>
+        <ul>
+            {% for post in posts %}
+                <li><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></li>
+            {% empty %}
+                <li>No posts available.</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Your Barangays</h2>
+        <ul>
+            {% for barangay in barangays %}
+                <li><a href="{% url 'barangay-detail' barangay.pk %}">{{ barangay.name }}</a></li>
+            {% empty %}
+                <li>No barangays available.</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Your Services</h2>
+        <ul>
+            {% for service in services %}
+                <li><a href="{% url 'service-detail' service.pk %}">{{ service.name }}</a></li>
+            {% empty %}
+                <li>No services available.</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Your Requests</h2>
+        <ul>
+            {% for request in requests %}
+                <li><a href="{% url 'request-detail' request.pk %}">{{ request.title }}</a></li>
+            {% empty %}
+                <li>No requests available.</li>
+            {% endfor %}
+        </ul>
+    </main>
+
+{% endblock %}
+
+
+
+
+</body>
+</html>

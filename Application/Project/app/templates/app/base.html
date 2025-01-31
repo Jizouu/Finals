@@ -1,0 +1,214 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Application</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: "Poppins", sans-serif;
+        }
+
+        /* Background Image */
+        body {
+            background-image: url({% static 'images/Background.jpeg' %}); /* Updated to use Django static tag */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Keep background fixed while scrolling */
+        }
+
+        /* Navbar Styling */
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        /* Navigation Links */
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            justify-content: center;
+            gap: 1rem;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: #ff9800;
+            color: black;
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 2rem;
+        }
+
+        /* Centered Box Styling */
+        .centered-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .centered-box h1,
+        .centered-box p,
+        .centered-box button {
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .centered-box button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            font-size: 1rem;
+        }
+
+        .centered-box button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        /* Alert Container */
+        #alert-container {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .alert {
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 5px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .success {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .error {
+            background-color: #f44336;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .centered-box {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'user-profile' %}">Profile</a></li>
+                <li><a href="{% url 'barangay-list' %}">Barangay</a></li>
+                <li><a href="{% url 'post-list' %}">Post</a></li>
+                <li><a href="{% url 'service-list' %}">Service</a></li>
+                <li><a href="{% url 'request-list' %}">Request</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% if messages %}
+        <div id="alert-container">
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="centered-box">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <script>
+        setTimeout(function() {
+            var alerts = document.querySelectorAll(".alert");
+            alerts.forEach(function(alert) {
+                alert.style.opacity = "0";
+                alert.style.transition = "opacity 0.5s ease-out";
+                setTimeout(function() {
+                    alert.style.display = "none";
+                }, 500);
+            });
+        }, 5000); // Auto-hide after 5 seconds
+    </script>
+</body>
+</html>
+

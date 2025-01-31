@@ -1,0 +1,11 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<h2>Request for {{ request.service.name }}</h2>
+<p>Status: {{ request.status }}</p>
+<p>Requested by: {{ request.user.username }}</p>
+<p>Requested at: {{ request.requested_at }}</p>
+<a href="{% url 'request-update' request.pk %}">Edit</a>
+<a href="{% url 'request-delete' request.pk %}">Delete</a>
+<a href="{% url 'request-list' %}">Back to Request List</a>
+{% endblock %}

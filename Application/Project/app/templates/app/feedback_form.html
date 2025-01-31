@@ -1,0 +1,45 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<section class="tagline">
+
+            <h1>This is</h1>
+            <h2>Feedback page</h2>
+
+    </section>
+
+<div class="container my-5">
+    <div class="form-card p-5 shadow-lg rounded">
+        <h2 class="text-center mb-4">Submit Feedback</h2>
+        <form method="post" class="feedback-form">
+            {% csrf_token %}
+            <div class="form-group mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Your Email (Optional)">
+            </div>
+            <div class="form-group mb-3">
+                <label for="barangay" class="form-label">Barangay</label>
+                <select name="barangay" id="barangay" class="form-select" required>
+                    {% for barangay in form.barangay.field.queryset %}
+                    <option value="{{ barangay.id }}">{{ barangay.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group mb-3">
+                <label for="rating" class="form-label">Rating (1-5)</label>
+                <input type="number" name="rating" id="rating" class="form-control" min="1" max="5" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="comments" class="form-label">Message</label>
+                <textarea name="comments" id="comments" class="form-control" rows="4" placeholder="Write your feedback here..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success w-100 mt-4">Submit Feedback</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

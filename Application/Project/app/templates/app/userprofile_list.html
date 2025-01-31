@@ -1,0 +1,15 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<h2>UserProfile List</h2>
+<a href="{% url 'userprofile-create' %}">Create New UserProfile</a>
+<ul>
+    {% for userprofile in userprofiles %}
+    <li>
+        <a href="{% url 'userprofile-detail' userprofile.pk %}">{{ userprofile.user.username }}</a>
+        <a href="{% url 'userprofile-update' userprofile.pk %}">Edit</a>
+        <a href="{% url 'userprofile-delete' userprofile.pk %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Delete Post</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Confirm Delete Post</h1>
+    </header>
+    <main>
+        <p>Are you sure you want to delete the post titled "{{ post.title }}"?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Confirm</button>
+            <a href="{% url 'post-list' %}">Cancel</a>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2025 Your Company Name</p>
+    </footer>
+</body>
+</html>
